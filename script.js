@@ -1,5 +1,6 @@
 let myLibrary = [];
 const bookContainer = document.querySelector(".book-container");
+const bookForm= document.querySelector(".addCard");
 
 function Book(title, author, pages, isRead) {
   this.title = title;
@@ -10,8 +11,9 @@ function Book(title, author, pages, isRead) {
 function addBookToLibrary(title, author, pages, isRead) {
   let newBook = new Book(title, author, pages, isRead);
   myLibrary.push(newBook);
+  displayBook(newBook);
 }
-function addBookCard(book) {
+function displayBook(book) {
   let books = document.createElement("div");
   let title = document.createElement("p");
   let author = document.createElement("p");
@@ -29,5 +31,13 @@ function addBookCard(book) {
   bookContainer.appendChild(books);
 }
 function addBookToDisplay() {
-  myLibrary.forEach((book) => addBookCard(book));
+  myLibrary.forEach((book) => displayBook(book));
 }
+bookForm.addEventListener('submit',(e)=>{
+  const title=document.getElementById('title');
+  const author=document.getElementById('author');
+  const pages=document.getElementById('pages');
+  const read=document.getElementById('isComplete');
+  addBookToLibrary(title.value, author.value, pages.value, read.value);
+  e.preventDefault();
+})
