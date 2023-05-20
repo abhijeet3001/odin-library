@@ -14,22 +14,38 @@
   justify-content: center;
   font-size: 1.7rem;
   border-bottom: 1px solid black;
-  margin-bottom: 1rem;
+  padding: 1rem;
+  letter-spacing: 4px;
 }
-.book-container{
+.book-container {
   padding: 2rem;
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 .book-card {
   border: 1px solid #000;
   border-radius: 0.6rem;
   height: 200px;
-  width: 200px;
+  width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding: 1rem;
+  justify-content: space-between;
   gap: 1rem;
+}
+.book-card :nth-child(1) {
+  font-weight: bold;
+  font-size: 2rem;
+  align-self: center;
+}
+.book-card :nth-child(2)::before {
+  content: "Written by  ";
+}
+.book-card :nth-child(3)::before {
+  content: "Pages  ";
+}
+.book-card :nth-child(4)::before {
+  content: "Completed  ";
 }
