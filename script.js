@@ -17,10 +17,10 @@ function addBookCard(book) {
   let author = document.createElement("p");
   let pages = document.createElement("p");
   let completed = document.createElement("p");
-  title.textContent = "Title :  " + book.title;
-  author.textContent = "Author :  " + book.author;
-  pages.textContent = "No.of Pages  :  " + book.pages;
-  completed.textContent = "Completed :  " + book.isRead ? "Yes" : "No";
+  title.textContent = book.title;
+  author.textContent = book.author;
+  pages.textContent = book.pages;
+  completed.textContent = book.isRead ? "Yes" : "No";
   books.appendChild(title);
   books.appendChild(author);
   books.appendChild(pages);
@@ -28,6 +28,6 @@ function addBookCard(book) {
   books.classList.add("book-card");
   bookContainer.appendChild(books);
 }
-function addBookToDisplay(){
+function addBookToDisplay() {
   myLibrary.forEach((book) => addBookCard(book));
 }
