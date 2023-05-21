@@ -1,6 +1,8 @@
 let myLibrary = [];
 const bookContainer = document.querySelector(".book-container");
 const bookForm= document.querySelector(".addCard");
+const addButton=document.querySelector(".add-book");
+
 
 function Book(title, author, pages, isRead) {
   this.title = title;
@@ -28,7 +30,7 @@ function displayBook(book) {
   books.appendChild(pages);
   books.appendChild(completed);
   books.classList.add("book-card");
-  bookContainer.appendChild(books);
+  bookContainer.insertBefore(books,bookForm);
 }
 function addBookToDisplay() {
   myLibrary.forEach((book) => displayBook(book));
@@ -39,5 +41,10 @@ bookForm.addEventListener('submit',(e)=>{
   const pages=document.getElementById('pages');
   const read=document.getElementById('isComplete');
   addBookToLibrary(title.value, author.value, pages.value, read.value);
+  hide();
   e.preventDefault();
 })
+function hide(){
+  bookForm.classList.toggle("hide");
+  addButton.classList.toggle("hide");
+}

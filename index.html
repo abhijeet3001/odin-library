@@ -6,18 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <script src="script.js" defer></script>
     <div class="header">
       <h1>Library</h1>
     </div>
     <div class="book-container">
       <div class="book-card">
-        <p>Title: Dummy-book</p>
-        <p>Author: Jk</p>
-        <p>Pages: 49</p>
-        <p>Completed: Yes</p>
+        <p>Dummy-book</p>
+        <p>Jk</p>
+        <p>49</p>
+        <p>Yes</p>
+      </div>
+      <form action=""  class="addCard hide">
+        <div class="new-entry">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title">
+        </div>
+        <div class="new-entry">
+          <label for="author">Author</label>
+          <input type="text" name="author" id="author">
+        </div>
+        <div class="new-entry">
+          <label for="page">Pages</label>
+          <input type="text" name="pages" id="pages">
+        </div>
+        <div class="new-entry">
+          <label for="isComplete">Completed</label>
+          <input type="text" name="isComplete" id="isComplete">
+        </div>
+        <div class="new-entry">
+          <button type="submit">Add Book</button>
+        </div>
+      </form>
+      <div class="add-book" onclick="hide()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="add-button"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
       </div>
     </div>
   </body>
