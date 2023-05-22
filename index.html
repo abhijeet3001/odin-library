@@ -13,13 +13,46 @@
       <h1>Library</h1>
     </div>
     <div class="book-container">
-      <div class="book-card">
-        <p>Dummy-book</p>
-        <p>Jk</p>
-        <p>49</p>
-        <p>Yes</p>
+      <div class="book-card" data-book-no="1">
+        <p>The Great Gatsby</p>
+        <p>F. Scott Fitzgerald</p>
+        <p>Pages: 180</p>
+        <p>Is Read: Yes</p>
+        <button class="remove-book">Remove Book</button>
       </div>
-      <form action=""  class="addCard hide">
+
+      <div class="book-card" data-book-no="2">
+        <p>To Kill a Mockingbird</p>
+        <p>Harper Lee</p>
+        <p>Pages: 281</p>
+        <p>Is Read: No</p>
+        <button class="remove-book">Remove Book</button>
+      </div>
+
+      <div class="book-card" data-book-no="3">
+        <p>1984</p>
+        <p>George Orwell</p>
+        <p>Pages: 328</p>
+        <p>Is Read: Yes</p>
+        <button class="remove-book">Remove Book</button>
+      </div>
+
+      <div class="book-card" data-book-no="4">
+        <p>Pride and Prejudice</p>
+        <p>Jane Austen</p>
+        <p>Pages: 432</p>
+        <p>Is Read: Yes</p>
+        <button class="remove-book">Remove Book</button>
+      </div>
+
+      <div class="book-card" data-book-no="5">
+        <p>The Catcher in the Rye</p>
+        <p>J.D. Salinger</p>
+        <p>Pages: 224</p>
+        <p>Is Read: No</p>
+        <button class="remove-book">Remove Book</button>
+      </div>
+      <form action="" class="addCard hide">
         <div class="new-entry">
           <label for="title">Title</label>
           <input type="text" name="title" id="title">
@@ -40,8 +73,9 @@
           <button type="submit">Add Book</button>
         </div>
       </form>
-      <div class="add-book" onclick="hide()">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="add-button"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
+      <div class="add-book">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" class="add-button">
+          <title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/></svg>
       </div>
     </div>
   </body>
