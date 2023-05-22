@@ -23,10 +23,11 @@
   gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
-.book-card, .addCard {
+.book-card,
+.addCard {
   border: 1px solid #000;
   border-radius: 0.6rem;
-  height: 200px;
+  height: 250px;
   width: auto;
   display: flex;
   flex-direction: column;
@@ -37,8 +38,9 @@
 }
 .book-card :nth-child(1) {
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.6rem;
   align-self: center;
+  text-align: center;
 }
 .book-card :nth-child(2)::before {
   content: "Written by  ";
@@ -49,23 +51,24 @@
 .book-card :nth-child(4)::before {
   content: "Completed  ";
 }
-.add-book{
+.add-book {
   display: grid;
   place-items: center;
 }
-.add-button{
+.add-button {
   height: 80px;
   width: 80px;
   border: 5px solid #000;
   border-radius: 10px;
+  transition: fill 0.3s, border-color 0.2s;
 }
-.add-button:hover{
+.add-button:hover {
   fill: blue;
-  border-color:blue ;
+  border-color: blue;
 }
-.add-button:active{
+.add-button:active {
   scale: 0.9;
 }
-.hide{
+.hide {
   display: none;
 }

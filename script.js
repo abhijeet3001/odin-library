@@ -1,9 +1,12 @@
 let myLibrary = [];
-let bookCount = 0;
-const bookContainer = document.querySelector(".book-container");
-const bookForm = document.querySelector(".addCard");
-const addButton = document.querySelector(".add-book");
+let bookCount = 5;
 
+const bookContainer = document.querySelector(".book-container");
+const addBookForm = document.querySelector(".addCard");
+const addBookButton = document.querySelector(".add-book");
+const removeBookButton = document.querySelectorAll(".remove-book");
+
+// Initialize constructor
 function Book(title, author, pages, isRead) {
   this.title = title;
   this.author = author;
@@ -19,61 +22,70 @@ function addBookToLibrary(title, author, pages, isRead) {
 }
 
 function displayBook(book) {
-  let books = document.createElement("div");
-  let title = document.createElement("p");
-  let author = document.createElement("p");
-  let pages = document.createElement("p");
-  let completed = document.createElement("p");
-  let removeButton = document.createElement("button");
-  title.textContent = book.title;
-  author.textContent = book.author;
-  pages.textContent = book.pages;
-  completed.textContent = book.isRead ? "Yes" : "No";
-  removeButton.textContent = "Remove Book";
-  removeButton.classList.add("remove-book");
+  let bookCard = document.createElement("div");
+
+  const title = makeChildElement("p", book.title);
+  const author = makeChildElement("p", book.author);
+  const pages = makeChildElement("p", book.pages);
+  const isRead = makeChildElement("p", book.isRead ? "Yes" : "No");
+
+  const removeButton = makeChildElement("button", "Remove Book");
   removeButton.addEventListener("click", removeBook);
-  books.appendChild(title);
-  books.appendChild(author);
-  books.appendChild(pages);
-  books.appendChild(completed);
-  books.appendChild(removeButton);
-  books.classList.add("book-card");
-  books.setAttribute("book-no", bookCount);
-  bookContainer.insertBefore(books, bookForm);
+
+  bookCard.appendChild(title);
+  bookCard.appendChild(author);
+  bookCard.appendChild(pages);
+  bookCard.appendChild(isRead);
+  bookCard.appendChild(removeButton);
+
+  bookCard.classList.add("book-card");
+  bookCard.setAttribute("data-book-no", bookCount);
+  bookContainer.insertBefore(bookCard, addBookForm);
 }
-function addBookToDisplay() {
-  myLibrary.forEach((book) => displayBook(book));
+
+function makeChildElement(tag, text) {
+  const element = document.createElement(tag);
+  element.textContent = text;
+  return element;
 }
 
 function updateAttributes(index) {
-  let bookElements = document.querySelectorAll("[book-no]");
+  let bookElements = document.querySelectorAll("[data-book-no]");
   bookElements.forEach((bookElement) => {
-    let currentIndex = bookElement.getAttribute("book-no");
+    let currentIndex = bookElement.getAttribute("data-book-no");
     if (currentIndex > index) {
-      bookElement.setAttribute("book-no", currentIndex - 1);
+      bookElement.setAttribute("data-book-no", currentIndex - 1);
     }
   });
 }
+
 function removeBook(e) {
-  index = e.target.parentElement.getAttribute("book-no");
+  index = e.target.parentElement.getAttribute("data-book-no");
   myLibrary.splice(index, 1);
   bookCount--;
-  let toRemove = document.querySelector(`[book-no = '${index}']`);
-  bookContainer.removeChild(toRemove);
+  let bookCardToRemove = document.querySelector(`[data-book-no = "${index}"]`);
+  bookContainer.removeChild(bookCardToRemove);
   updateAttributes(index);
 }
 
-bookForm.addEventListener("submit", (e) => {
+function toggleFormVisibility() {
+  addBookForm.classList.toggle("hide");
+  addBookButton.classList.toggle("hide");
+}
+
+addBookForm.addEventListener("submit", (e) => {
   const title = document.getElementById("title");
   const author = document.getElementById("author");
   const pages = document.getElementById("pages");
-  const read = document.getElementById("isComplete");
-  addBookToLibrary(title.value, author.value, pages.value, read.value);
-  hide();
+  const read = document.getElementById("isComplete").value === "true";
+  addBookToLibrary(title.value, author.value, pages.value, read);
+  toggleFormVisibility();
   e.preventDefault();
 });
 
-function hide() {
-  bookForm.classList.toggle("hide");
-  addButton.classList.toggle("hide");
+addBookButton.addEventListener("click", toggleFormVisibility);
+function addBooksToDisplay() {
+  myLibrary.forEach((book) => displayBook(book));
 }
+
+removeBookButton.forEach(btn => btn.addEventListener("click", removeBook));
