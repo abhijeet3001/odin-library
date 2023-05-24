@@ -14,8 +14,9 @@ function Book(title, author, pages, isRead) {
   this.isRead = isRead;
 }
 
-Book.prototype.readStatus = function () {
-  this.isRead = !this.isRead;
+Book.prototype.toggleRead = function () {
+  this.isRead = this.isRead === "true" ? "false" : "true";
+  return this.isRead;
 };
 
 function addBookToLibrary(title, author, pages, isRead) {
@@ -31,19 +32,26 @@ function displayBook(book) {
   const title = makeChildElement("p", book.title);
   const author = makeChildElement("p", book.author);
   const pages = makeChildElement("p", book.pages);
-  const isRead = makeChildElement("p", book.isRead ? "Yes" : "No");
+  const isRead = makeChildElement("p", book.isRead === "true" ? "Yes" : "No");
   isRead.classList.add("read");
+
   const removeButton = makeChildElement("button", "Remove Book");
+  removeButton.classList.add("btn-remove");
   removeButton.addEventListener("click", removeBook);
-  const toggleComplete = makeChildElement("button", "Not Completed");
+
+  let readMessage = (book.isRead === "true" ? " " : "Not") + " Completed";
+  const toggleComplete = makeChildElement("button", readMessage);
+  toggleComplete.classList.add("btn-read");
+  toggleComplete.style.backgroundColor =
+    book.isRead === "true" ? "green" : "red";
   toggleComplete.addEventListener("click", toggleCompleteStatus);
 
   bookCard.appendChild(title);
   bookCard.appendChild(author);
   bookCard.appendChild(pages);
   bookCard.appendChild(isRead);
-  bookCard.appendChild(removeButton);
   bookCard.appendChild(toggleComplete);
+  bookCard.appendChild(removeButton);
 
   bookCard.classList.add("book-card");
   bookCard.setAttribute("data-book-no", bookCount);
@@ -78,11 +86,15 @@ function removeBook(e) {
 
 function toggleCompleteStatus(e) {
   index = e.target.parentElement.getAttribute("data-book-no");
-  myLibrary[index - 1].readStatus();
-  const currentReadStatus = document.querySelector(
+  const currentReadStatus = myLibrary[index - 1].toggleRead();
+  const currentReadElement = document.querySelector(
     `[data-book-no ="${index}"] .read`
   );
-  currentReadStatus.textContent = myLibrary[index - 1].isRead ? "Yes" : "No";
+  e.target.style.backgroundColor =
+    currentReadStatus === "true" ? "green" : "red";
+  e.target.textContent =
+    (currentReadStatus === "true" ? "" : "Not") + " Completed";
+  currentReadElement.textContent = currentReadStatus === "true" ? "Yes" : "No";
 }
 function toggleFormVisibility() {
   addBookForm.classList.toggle("hide");

@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  --book-card-gap: 1.4rem;
 }
 :root {
   font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont,
@@ -25,32 +26,49 @@
 }
 .book-card,
 .addCard {
-  border: 1px solid #000;
+  border: 2px solid #000;
   border-radius: 0.6rem;
-  height: 250px;
+  height: 300px;
   width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
-  justify-content: space-between;
-  gap: 1rem;
+  padding-top: 1rem;
+  gap: var(--book-card-gap);
+  flex: 1;
+  overflow: hidden;
 }
-.book-card :nth-child(1) {
+.book-card > :nth-child(1) {
   font-weight: bold;
   font-size: 1.6rem;
   align-self: center;
   text-align: center;
 }
-.book-card :nth-child(2)::before {
+.book-card > :nth-child(2)::before {
   content: "Written by  ";
 }
-.book-card :nth-child(3)::before {
+.book-card > :nth-child(3)::before {
   content: "Pages  ";
 }
-.book-card :nth-child(4)::before {
+.book-card > :nth-child(4)::before {
   content: "Completed  ";
 }
+.btn-read,
+.btn-remove {
+  height: 2rem;
+  width: 100%;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  background-color: gray;
+  color: white;
+}
+.btn-read {
+  margin-top: auto;
+  margin-bottom: calc(-1 * var(--book-card-gap));
+  /* background-color: red; */
+}
+
 .add-book {
   display: grid;
   place-items: center;
