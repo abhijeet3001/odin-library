@@ -23,20 +23,22 @@
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  background: #f7f8fc;
 }
 .book-card,
 .addCard {
-  border: 2px solid #000;
   border-radius: 0.6rem;
   height: 300px;
   width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 1rem;
+  padding-top: 2rem;
   gap: var(--book-card-gap);
   flex: 1;
   overflow: hidden;
+  background: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 .book-card > :nth-child(1) {
   font-weight: bold;
@@ -50,11 +52,10 @@
 .book-card > :nth-child(3)::before {
   content: "Pages  ";
 }
-.book-card > :nth-child(4)::before {
-  content: "Completed  ";
-}
+
 .btn-read,
-.btn-remove {
+.btn-remove,
+.btn-submit-book {
   height: 2rem;
   width: 100%;
   border: none;
@@ -66,12 +67,26 @@
 .btn-read {
   margin-top: auto;
   margin-bottom: calc(-1 * var(--book-card-gap));
-  /* background-color: red; */
 }
 
 .add-book {
   display: grid;
   place-items: center;
+}
+.addCard > input {
+  width: 80%;
+  background-color: #f7f8fc;
+  border: 2px solid black;
+  padding: 5px;
+  padding-left: 0.5rem;
+  border-radius: 5px;
+}
+.isRead {
+  display: flex;
+  gap: 10px;
+}
+.addCard button {
+  margin-top: auto;
 }
 .add-button {
   height: 80px;
