@@ -42,7 +42,9 @@ function displayBook(book) {
 
   removeButton.classList.add("btn-remove");
   toggleComplete.classList.add("btn-read");
-  toggleComplete.style.backgroundColor = book.isRead ? "green" : "red";
+  toggleComplete.style.backgroundColor = book.isRead
+    ? "var(--green)"
+    : "var(--red)";
 
   removeButton.onclick = removeBook;
   toggleComplete.onclick = toggleCompleteStatus;
@@ -84,7 +86,9 @@ function removeBook(e) {
 function toggleCompleteStatus(e) {
   index = e.target.parentElement.getAttribute("data-book-no");
   const currentReadStatus = myLibrary[index - 1].toggleRead();
-  e.target.style.backgroundColor = currentReadStatus ? "green" : "red";
+  e.target.style.backgroundColor = currentReadStatus
+    ? "var(--green)"
+    : "var(--red)";
   e.target.textContent = (currentReadStatus ? "" : "Not") + " Completed";
 }
 function toggleFormVisibility() {
