@@ -40,7 +40,7 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 .book-card,
-.addCard {
+.add-book-card {
   border-radius: 0.6rem;
   height: 300px;
   width: auto;
@@ -98,10 +98,10 @@ body {
   display: grid;
   place-items: center;
 }
-.addCard {
+.add-book-card {
   font-weight: normal;
 }
-.addCard > input {
+.add-book-card > input {
   width: 80%;
   background-color: #f7f8fc;
   border: 2px solid black;
@@ -109,7 +109,7 @@ body {
   padding-left: 0.5rem;
   border-radius: 5px;
 }
-.addCard > input:focus {
+.add-book-card > input:focus {
   outline: none;
   border-color: var(--accent-color);
 }
@@ -120,7 +120,7 @@ input:checked {
   display: flex;
   gap: 10px;
 }
-.addCard button {
+.add-book-card button {
   margin-top: auto;
 }
 .add-button {

@@ -2,7 +2,7 @@ let myLibrary = [];
 let bookCount = 0;
 
 const bookContainer = document.querySelector(".book-container");
-const addBookForm = document.querySelector(".addCard");
+const addBookForm = document.querySelector(".add-book-card");
 const addBookButton = document.querySelector(".add-book");
 const removeBookButton = document.querySelectorAll(".remove-book");
 
